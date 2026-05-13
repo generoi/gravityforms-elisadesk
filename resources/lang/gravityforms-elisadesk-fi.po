@@ -1,0 +1,179 @@
+# Finnish translation for Elisa Desk for Gravity Forms.
+# Copyright (C) 2026 Genero
+# This file is distributed under the MIT License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Elisa Desk for Gravity Forms 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/generoi/gravityforms-elisadesk/issues\n"
+"PO-Revision-Date: 2026-05-13 00:00+0000\n"
+"Last-Translator: Genero <developers@genero.fi>\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: gravityforms-elisadesk\n"
+
+#. Plugin Name of the plugin
+msgid "Elisa Desk for Gravity Forms"
+msgstr "Elisa Desk Gravity Formsille"
+
+#. Description of the plugin
+msgid "Gravity Forms feed addon that posts entries to Elisa Desk's generic form API. Supports field mapping, multiple feeds per form, conditional logic, and file uploads (multipart)."
+msgstr "Gravity Forms -syötelisäosa, joka lähettää lomakemerkinnät Elisa Deskin yleiseen lomake-API:in. Tukee kenttäkartoitusta, useita syötteitä lomaketta kohti, ehdollista logiikkaa ja tiedostolatauksia (multipart)."
+
+msgid "Feed Settings"
+msgstr "Syötteen asetukset"
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Internal name to identify this feed."
+msgstr "Sisäinen nimi tämän syötteen tunnistamiseen."
+
+msgid "Endpoint URL"
+msgstr "Päätepisteen URL"
+
+msgid "Leave empty to fall back to the ELISA_DESK_ENDPOINT constant or env var."
+msgstr "Jätä tyhjäksi käyttääksesi ELISA_DESK_ENDPOINT-vakiota tai ympäristömuuttujaa."
+
+msgid "Authorization header"
+msgstr "Authorization-otsake"
+
+msgid "Optional value sent as the Authorization HTTP header (e.g. \"Bearer …\"). Leave empty to fall back to the ELISA_DESK_AUTH constant or env var. Prefer the constant/env var over storing secrets in the database."
+msgstr "Vapaaehtoinen arvo, joka lähetetään Authorization-HTTP-otsakkeena (esim. \"Bearer …\"). Jätä tyhjäksi käyttääksesi ELISA_DESK_AUTH-vakiota tai ympäristömuuttujaa. Suosi vakiota tai ympäristömuuttujaa salaisuuksien tallentamisessa tietokannan sijaan."
+
+msgid "Timeout (seconds)"
+msgstr "Aikakatkaisu (sekunteina)"
+
+msgid "HTTP request timeout. Leave empty to fall back to the ELISA_DESK_TIMEOUT constant, env var, or 15 seconds default."
+msgstr "HTTP-pyynnön aikakatkaisu. Jätä tyhjäksi käyttääksesi ELISA_DESK_TIMEOUT-vakiota, ympäristömuuttujaa tai 15 sekunnin oletusarvoa."
+
+msgid "Connection"
+msgstr "Yhteys"
+
+msgid "Site-wide connection settings — applied to every Elisa Desk feed on this site."
+msgstr "Sivustokohtaiset yhteysasetukset — sovelletaan jokaiseen tämän sivuston Elisa Desk -syötteeseen."
+
+msgid "Title template"
+msgstr "Otsikon malli"
+
+msgid "Used as the \"title\" payload field. Supports Gravity Forms merge tags, e.g. \"Reklamaatio: {Tuote:16:value}\" (the :value modifier preserves the stored value for select fields) or \"Palaute: {Nimi:2}\"."
+msgstr "Käytetään \"title\"-hyötykuormakenttänä. Tukee Gravity Formsin yhdistelytageja, esim. \"Reklamaatio: {Tuote:16:value}\" (:value-muuntelija säilyttää valintakenttien tallennetun arvon) tai \"Palaute: {Nimi:2}\"."
+
+msgid "Source site"
+msgstr "Lähdesivusto"
+
+msgid "Value sent as the \"source_site\" payload field for every feed on this site. Leave empty to default to the host of home_url()."
+msgstr "Arvo, joka lähetetään \"source_site\"-hyötykuormakenttänä jokaisesta tämän sivuston syötteestä. Jätä tyhjäksi käyttääksesi home_url():n isäntänimeä."
+
+msgid "Inquiry Type"
+msgstr "Yhteydenoton tyyppi"
+
+msgid "Feedback"
+msgstr "Palaute"
+
+msgid "Product complaint"
+msgstr "Tuotereklamaatio"
+
+msgid "Derive from mapped field"
+msgstr "Päättele yhdistetystä kentästä"
+
+msgid "Choose a fixed inquiry_type, or derive it from the mapped \"inquiry_type\" key's GF field value (matching one of the \"Complaint values\" below)."
+msgstr "Valitse kiinteä inquiry_type tai päättele se yhdistetyn \"inquiry_type\"-avaimen GF-kentän arvosta (vertaa alla olevaan \"Reklamaation arvot\" -kenttään)."
+
+msgid "Complaint values"
+msgstr "Reklamaation arvot"
+
+msgid "When inquiry_type is derived, an entry is treated as product_complaint if the mapped \"inquiry_type\" field matches one of these values. Multiple values can be separated by commas, e.g. \"Reklamaatio,Reklamation\"."
+msgstr "Kun inquiry_type on \"päättele\", merkintä käsitellään tuotereklamaationa, jos yhdistetyn \"inquiry_type\"-kentän arvo vastaa jotakin näistä arvoista. Useita arvoja voi erottaa pilkulla, esim. \"Reklamaatio,Reklamation\"."
+
+msgid "Field Mapping"
+msgstr "Kenttäkartoitus"
+
+msgid "Map Elisa Desk payload keys to Gravity Forms fields. File upload fields are automatically sent as multipart attachments under the chosen key."
+msgstr "Yhdistä Elisa Deskin hyötykuorman avaimet Gravity Formsin kenttiin. Tiedostolatauskentät lähetetään automaattisesti multipart-liitteinä valitulla avaimella."
+
+msgid "Fields"
+msgstr "Kentät"
+
+msgid "Conditional Logic"
+msgstr "Ehdollinen logiikka"
+
+msgid "Enable Condition"
+msgstr "Ota ehto käyttöön"
+
+msgid "Process this feed if"
+msgstr "Käsittele tämä syöte, jos"
+
+msgid "Send to Elisa Desk only if the following condition matches:"
+msgstr "Lähetä Elisa Deskiin vain, jos seuraava ehto täyttyy:"
+
+msgid "Endpoint URL is not configured."
+msgstr "Päätepisteen URL:ää ei ole määritetty."
+
+msgid "Endpoint URL failed validation (not a permitted external URL)."
+msgstr "Päätepisteen URL ei läpäissyt tarkistusta (ei ole sallittu ulkoinen URL)."
+
+msgid "Request failed: %s"
+msgstr "Pyyntö epäonnistui: %s"
+
+msgid "HTTP %1$d response: %2$s"
+msgstr "HTTP %1$d -vastaus: %2$s"
+
+msgid "Email"
+msgstr "Sähköposti"
+
+msgid "Phone"
+msgstr "Puhelin"
+
+msgid "Street address"
+msgstr "Katuosoite"
+
+msgid "Postal code"
+msgstr "Postinumero"
+
+msgid "City"
+msgstr "Postitoimipaikka"
+
+msgid "Content (message text)"
+msgstr "Sisältö (viestin teksti)"
+
+msgid "Inquiry type source field"
+msgstr "Yhteydenoton tyyppi -lähdekenttä"
+
+msgid "Product"
+msgstr "Tuote"
+
+msgid "Product weight"
+msgstr "Tuotteen paino"
+
+msgid "Purchase store"
+msgstr "Ostopaikka"
+
+msgid "Purchase date"
+msgstr "Ostopäivä"
+
+msgid "Best before"
+msgstr "Viimeinen käyttöpäivä"
+
+msgid "Attachment (file upload)"
+msgstr "Liite (tiedostolataus)"
+
+msgid "Elisa Desk"
+msgstr "Elisa Desk"
+
+msgid "Sent to Elisa Desk (HTTP %d)."
+msgstr "Lähetetty Elisa Deskiin (HTTP %d)."
+
+msgid "Logging"
+msgstr "Lokitus"
+
+msgid "Verbose payload logging"
+msgstr "Yksityiskohtainen hyötykuorman lokitus"
+
+msgid "Log every field value and attached file path to the GF debug log."
+msgstr "Kirjaa kaikki kenttäarvot ja liitettyjen tiedostojen polut GF-virheenkorjauslokiin."
+
+msgid "When enabled, every Elisa Desk submission writes its full payload (including PII like names, emails, and phone numbers) to the Gravity Forms debug log. Useful for debugging integration issues — turn off in production."
+msgstr "Kun käytössä, jokainen Elisa Desk -lähetys kirjoittaa täyden hyötykuormansa (mukaan lukien henkilötiedot kuten nimet, sähköpostit ja puhelinnumerot) Gravity Formsin virheenkorjauslokiin. Hyödyllinen integraatio-ongelmien selvittämiseen — sammuta tuotannossa."

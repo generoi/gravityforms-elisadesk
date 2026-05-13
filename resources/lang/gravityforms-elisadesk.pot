@@ -1,0 +1,258 @@
+# Copyright (C) 2026 Genero
+# This file is distributed under the MIT License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Elisa Desk for Gravity Forms 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/gravityforms-elisadesk\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-05-13T11:10:27-03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.13.0-alpha\n"
+"X-Domain: gravityforms-elisadesk\n"
+
+#. Plugin Name of the plugin
+#: gravityforms-elisadesk.php
+msgid "Elisa Desk for Gravity Forms"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: gravityforms-elisadesk.php
+msgid "https://github.com/generoi/gravityforms-elisadesk"
+msgstr ""
+
+#. Description of the plugin
+#: gravityforms-elisadesk.php
+msgid "Gravity Forms feed addon that posts entries to Elisa Desk's generic form API. Supports field mapping, multiple feeds per form, conditional logic, and file uploads (multipart)."
+msgstr ""
+
+#. Author of the plugin
+#: gravityforms-elisadesk.php
+msgid "Genero"
+msgstr ""
+
+#. Author URI of the plugin
+#: gravityforms-elisadesk.php
+msgid "https://genero.fi/"
+msgstr ""
+
+#: src/AddOn.php:60
+msgid "Connection"
+msgstr ""
+
+#: src/AddOn.php:61
+msgid "Site-wide connection settings — applied to every Elisa Desk feed on this site."
+msgstr ""
+
+#: src/AddOn.php:65
+msgid "Endpoint URL"
+msgstr ""
+
+#: src/AddOn.php:68
+msgid "Leave empty to fall back to the ELISA_DESK_ENDPOINT constant or env var."
+msgstr ""
+
+#: src/AddOn.php:72
+msgid "Authorization header"
+msgstr ""
+
+#: src/AddOn.php:75
+msgid "Optional value sent as the Authorization HTTP header (e.g. \"Bearer …\"). Leave empty to fall back to the ELISA_DESK_AUTH constant or env var. Prefer the constant/env var over storing secrets in the database."
+msgstr ""
+
+#: src/AddOn.php:79
+msgid "Timeout (seconds)"
+msgstr ""
+
+#: src/AddOn.php:82
+msgid "HTTP request timeout. Leave empty to fall back to the ELISA_DESK_TIMEOUT constant, env var, or 15 seconds default."
+msgstr ""
+
+#: src/AddOn.php:86
+msgid "Source site"
+msgstr ""
+
+#: src/AddOn.php:89
+msgid "Value sent as the \"source_site\" payload field for every feed on this site. Leave empty to default to the host of home_url()."
+msgstr ""
+
+#: src/AddOn.php:94
+msgid "Logging"
+msgstr ""
+
+#: src/AddOn.php:98
+msgid "Verbose payload logging"
+msgstr ""
+
+#: src/AddOn.php:102
+msgid "Log every field value and attached file path to the GF debug log."
+msgstr ""
+
+#: src/AddOn.php:104
+msgid "When enabled, every Elisa Desk submission writes its full payload (including PII like names, emails, and phone numbers) to the Gravity Forms debug log. Useful for debugging integration issues — turn off in production."
+msgstr ""
+
+#: src/AddOn.php:115
+msgid "Feed Settings"
+msgstr ""
+
+#: src/AddOn.php:119
+#: src/AddOn.php:191
+#: src/AddOn.php:382
+msgid "Name"
+msgstr ""
+
+#: src/AddOn.php:123
+msgid "Internal name to identify this feed."
+msgstr ""
+
+#: src/AddOn.php:127
+msgid "Title template"
+msgstr ""
+
+#: src/AddOn.php:131
+msgid "Used as the \"title\" payload field. Supports Gravity Forms merge tags, e.g. \"Reklamaatio: {Tuote:16:value}\" (the :value modifier preserves the stored value for select fields) or \"Palaute: {Nimi:2}\"."
+msgstr ""
+
+#: src/AddOn.php:136
+#: src/AddOn.php:140
+#: src/AddOn.php:192
+msgid "Inquiry Type"
+msgstr ""
+
+#: src/AddOn.php:144
+msgid "Feedback"
+msgstr ""
+
+#: src/AddOn.php:145
+msgid "Product complaint"
+msgstr ""
+
+#: src/AddOn.php:146
+msgid "Derive from mapped field"
+msgstr ""
+
+#: src/AddOn.php:148
+msgid "Choose a fixed inquiry_type, or derive it from the mapped \"inquiry_type\" key's GF field value (matching one of the \"Complaint values\" below)."
+msgstr ""
+
+#: src/AddOn.php:152
+msgid "Complaint values"
+msgstr ""
+
+#: src/AddOn.php:156
+msgid "When inquiry_type is derived, an entry is treated as product_complaint if the mapped \"inquiry_type\" field matches one of these values. Multiple values can be separated by commas, e.g. \"Reklamaatio,Reklamation\"."
+msgstr ""
+
+#: src/AddOn.php:161
+msgid "Field Mapping"
+msgstr ""
+
+#: src/AddOn.php:162
+msgid "Map Elisa Desk payload keys to Gravity Forms fields. File upload fields are automatically sent as multipart attachments under the chosen key."
+msgstr ""
+
+#: src/AddOn.php:166
+msgid "Fields"
+msgstr ""
+
+#: src/AddOn.php:174
+msgid "Conditional Logic"
+msgstr ""
+
+#: src/AddOn.php:178
+msgid "Enable Condition"
+msgstr ""
+
+#: src/AddOn.php:180
+msgid "Process this feed if"
+msgstr ""
+
+#: src/AddOn.php:181
+msgid "Send to Elisa Desk only if the following condition matches:"
+msgstr ""
+
+#: src/AddOn.php:213
+msgid "Endpoint URL is not configured."
+msgstr ""
+
+#: src/AddOn.php:221
+msgid "Endpoint URL failed validation (not a permitted external URL)."
+msgstr ""
+
+#. translators: %s: error message
+#: src/AddOn.php:261
+#, php-format
+msgid "Request failed: %s"
+msgstr ""
+
+#. translators: 1: HTTP status code, 2: response body
+#: src/AddOn.php:276
+#, php-format
+msgid "HTTP %1$d response: %2$s"
+msgstr ""
+
+#: src/AddOn.php:383
+msgid "Email"
+msgstr ""
+
+#: src/AddOn.php:384
+msgid "Phone"
+msgstr ""
+
+#: src/AddOn.php:385
+msgid "Street address"
+msgstr ""
+
+#: src/AddOn.php:386
+msgid "Postal code"
+msgstr ""
+
+#: src/AddOn.php:387
+msgid "City"
+msgstr ""
+
+#: src/AddOn.php:388
+msgid "Content (message text)"
+msgstr ""
+
+#: src/AddOn.php:389
+msgid "Inquiry type source field"
+msgstr ""
+
+#: src/AddOn.php:390
+msgid "Product"
+msgstr ""
+
+#: src/AddOn.php:391
+msgid "Product weight"
+msgstr ""
+
+#: src/AddOn.php:392
+msgid "Purchase store"
+msgstr ""
+
+#: src/AddOn.php:393
+msgid "Purchase date"
+msgstr ""
+
+#: src/AddOn.php:394
+msgid "Best before"
+msgstr ""
+
+#: src/AddOn.php:395
+msgid "Attachment (file upload)"
+msgstr ""
+
+#: src/AddOn.php:486
+msgid "Elisa Desk"
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: src/AddOn.php:489
+#, php-format
+msgid "Sent to Elisa Desk (HTTP %d)."
+msgstr ""

@@ -1,0 +1,41 @@
+{
+  "name": "generoi/gravityforms-elisadesk",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "description": "Gravity Forms feed addon that posts entries to Elisa Desk's generic form API.",
+  "homepage": "https://github.com/generoi/gravityforms-elisadesk",
+  "authors": [
+    {
+      "name": "Genero",
+      "email": "developers@genero.fi",
+      "homepage": "https://genero.fi"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "gravityforms",
+    "elisa-desk"
+  ],
+  "support": {
+    "issues": "https://github.com/generoi/gravityforms-elisadesk/issues"
+  },
+  "require": {
+    "php": ">=8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6 || ^10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Genero\\ElisaDesk\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Genero\\ElisaDesk\\Tests\\": "test/unit/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  }
+}

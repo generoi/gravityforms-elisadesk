@@ -1,0 +1,179 @@
+# Swedish translation for Elisa Desk for Gravity Forms.
+# Copyright (C) 2026 Genero
+# This file is distributed under the MIT License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Elisa Desk for Gravity Forms 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/generoi/gravityforms-elisadesk/issues\n"
+"PO-Revision-Date: 2026-05-13 00:00+0000\n"
+"Last-Translator: Genero <developers@genero.fi>\n"
+"Language-Team: Swedish\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: gravityforms-elisadesk\n"
+
+#. Plugin Name of the plugin
+msgid "Elisa Desk for Gravity Forms"
+msgstr "Elisa Desk för Gravity Forms"
+
+#. Description of the plugin
+msgid "Gravity Forms feed addon that posts entries to Elisa Desk's generic form API. Supports field mapping, multiple feeds per form, conditional logic, and file uploads (multipart)."
+msgstr "Gravity Forms-flödestillägg som skickar formulärinlägg till Elisa Desks generella formulär-API. Stöder fältkartläggning, flera flöden per formulär, villkorlig logik och filuppladdningar (multipart)."
+
+msgid "Feed Settings"
+msgstr "Flödesinställningar"
+
+msgid "Name"
+msgstr "Namn"
+
+msgid "Internal name to identify this feed."
+msgstr "Internt namn för att identifiera detta flöde."
+
+msgid "Endpoint URL"
+msgstr "Endpoint-URL"
+
+msgid "Leave empty to fall back to the ELISA_DESK_ENDPOINT constant or env var."
+msgstr "Lämna tom för att använda konstanten ELISA_DESK_ENDPOINT eller miljövariabeln."
+
+msgid "Authorization header"
+msgstr "Authorization-header"
+
+msgid "Optional value sent as the Authorization HTTP header (e.g. \"Bearer …\"). Leave empty to fall back to the ELISA_DESK_AUTH constant or env var. Prefer the constant/env var over storing secrets in the database."
+msgstr "Valfritt värde som skickas som Authorization-HTTP-header (t.ex. \"Bearer …\"). Lämna tom för att använda konstanten ELISA_DESK_AUTH eller miljövariabeln. Föredra konstant eller miljövariabel framför att lagra hemligheter i databasen."
+
+msgid "Timeout (seconds)"
+msgstr "Tidsgräns (sekunder)"
+
+msgid "HTTP request timeout. Leave empty to fall back to the ELISA_DESK_TIMEOUT constant, env var, or 15 seconds default."
+msgstr "Tidsgräns för HTTP-förfrågan. Lämna tom för att använda konstanten ELISA_DESK_TIMEOUT, miljövariabeln eller standardvärdet 15 sekunder."
+
+msgid "Connection"
+msgstr "Anslutning"
+
+msgid "Site-wide connection settings — applied to every Elisa Desk feed on this site."
+msgstr "Webbplatsövergripande anslutningsinställningar — tillämpas på alla Elisa Desk-flöden på denna webbplats."
+
+msgid "Title template"
+msgstr "Titelmall"
+
+msgid "Used as the \"title\" payload field. Supports Gravity Forms merge tags, e.g. \"Reklamaatio: {Tuote:16:value}\" (the :value modifier preserves the stored value for select fields) or \"Palaute: {Nimi:2}\"."
+msgstr "Används som nyttolastfältet \"title\". Stöder Gravity Forms sammanslagningstaggar, t.ex. \"Reklamaatio: {Tuote:16:value}\" (:value-modifieraren bevarar det lagrade värdet för select-fält) eller \"Palaute: {Nimi:2}\"."
+
+msgid "Source site"
+msgstr "Källwebbplats"
+
+msgid "Value sent as the \"source_site\" payload field for every feed on this site. Leave empty to default to the host of home_url()."
+msgstr "Värdet som skickas som nyttolastfältet \"source_site\" för alla flöden på denna webbplats. Lämna tom för att använda värden från home_url()."
+
+msgid "Inquiry Type"
+msgstr "Ärendetyp"
+
+msgid "Feedback"
+msgstr "Återkoppling"
+
+msgid "Product complaint"
+msgstr "Produktreklamation"
+
+msgid "Derive from mapped field"
+msgstr "Härled från kartlagt fält"
+
+msgid "Choose a fixed inquiry_type, or derive it from the mapped \"inquiry_type\" key's GF field value (matching one of the \"Complaint values\" below)."
+msgstr "Välj en fast inquiry_type eller härled den från det kartlagda \"inquiry_type\"-nyckelns GF-fältvärde (jämför med \"Reklamationsvärden\" nedan)."
+
+msgid "Complaint values"
+msgstr "Reklamationsvärden"
+
+msgid "When inquiry_type is derived, an entry is treated as product_complaint if the mapped \"inquiry_type\" field matches one of these values. Multiple values can be separated by commas, e.g. \"Reklamaatio,Reklamation\"."
+msgstr "När inquiry_type härleds behandlas en post som product_complaint om det kartlagda \"inquiry_type\"-fältet matchar något av dessa värden. Flera värden kan separeras med komma, t.ex. \"Reklamaatio,Reklamation\"."
+
+msgid "Field Mapping"
+msgstr "Fältkartläggning"
+
+msgid "Map Elisa Desk payload keys to Gravity Forms fields. File upload fields are automatically sent as multipart attachments under the chosen key."
+msgstr "Kartlägg Elisa Desks nyttolastnycklar till Gravity Forms-fält. Filuppladdningsfält skickas automatiskt som multipart-bilagor under vald nyckel."
+
+msgid "Fields"
+msgstr "Fält"
+
+msgid "Conditional Logic"
+msgstr "Villkorlig logik"
+
+msgid "Enable Condition"
+msgstr "Aktivera villkor"
+
+msgid "Process this feed if"
+msgstr "Behandla detta flöde om"
+
+msgid "Send to Elisa Desk only if the following condition matches:"
+msgstr "Skicka till Elisa Desk endast om följande villkor uppfylls:"
+
+msgid "Endpoint URL is not configured."
+msgstr "Endpoint-URL är inte konfigurerad."
+
+msgid "Endpoint URL failed validation (not a permitted external URL)."
+msgstr "Endpoint-URL klarade inte valideringen (inte en tillåten extern URL)."
+
+msgid "Request failed: %s"
+msgstr "Förfrågan misslyckades: %s"
+
+msgid "HTTP %1$d response: %2$s"
+msgstr "HTTP %1$d-svar: %2$s"
+
+msgid "Email"
+msgstr "E-post"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Street address"
+msgstr "Gatuadress"
+
+msgid "Postal code"
+msgstr "Postnummer"
+
+msgid "City"
+msgstr "Postort"
+
+msgid "Content (message text)"
+msgstr "Innehåll (meddelandetext)"
+
+msgid "Inquiry type source field"
+msgstr "Ärendetyp-källfält"
+
+msgid "Product"
+msgstr "Produkt"
+
+msgid "Product weight"
+msgstr "Produktens vikt"
+
+msgid "Purchase store"
+msgstr "Inköpsställe"
+
+msgid "Purchase date"
+msgstr "Inköpsdatum"
+
+msgid "Best before"
+msgstr "Bäst före"
+
+msgid "Attachment (file upload)"
+msgstr "Bilaga (filuppladdning)"
+
+msgid "Elisa Desk"
+msgstr "Elisa Desk"
+
+msgid "Sent to Elisa Desk (HTTP %d)."
+msgstr "Skickat till Elisa Desk (HTTP %d)."
+
+msgid "Logging"
+msgstr "Loggning"
+
+msgid "Verbose payload logging"
+msgstr "Detaljerad nyttolastloggning"
+
+msgid "Log every field value and attached file path to the GF debug log."
+msgstr "Logga varje fältvärde och bifogad filsökväg till GF-felsökningsloggen."
+
+msgid "When enabled, every Elisa Desk submission writes its full payload (including PII like names, emails, and phone numbers) to the Gravity Forms debug log. Useful for debugging integration issues — turn off in production."
+msgstr "När detta är aktiverat skriver varje Elisa Desk-inlämning sin fullständiga nyttolast (inklusive personuppgifter som namn, e-postadresser och telefonnummer) till Gravity Forms felsökningslogg. Användbart för felsökning av integrationsproblem — stäng av i produktion."
