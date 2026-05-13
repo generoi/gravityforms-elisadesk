@@ -53,6 +53,88 @@ class AddOn extends \GFFeedAddOn
         parent::__construct();
     }
 
+    public function init(): void
+    {
+        parent::init();
+
+        // GF's form export doesn't carry feeds by default. We attach ours to
+        // the exported form payload and restore them on import. Idempotent by
+        // feed name so re-imports don't duplicate.
+        add_filter('gform_export_form', [$this, 'attachFeedsToExport']);
+        add_action('gform_forms_post_import', [$this, 'restoreFeedsFromImport']);
+    }
+
+    /**
+     * @param  array<string, mixed>  $form
+     * @return array<string, mixed>
+     */
+    public function attachFeedsToExport(array $form): array
+    {
+        $feeds = $this->get_feeds((int) $form['id']);
+        if (! $feeds) {
+            return $form;
+        }
+
+        $exported = [];
+        foreach ($feeds as $feed) {
+            $exported[] = [
+                'meta' => $feed['meta'] ?? [],
+                'is_active' => (int) ($feed['is_active'] ?? 1),
+            ];
+        }
+        $form['feeds_'.Plugin::SLUG] = $exported;
+
+        return $form;
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $forms
+     */
+    public function restoreFeedsFromImport(array $forms): void
+    {
+        $key = 'feeds_'.Plugin::SLUG;
+        foreach ($forms as $form) {
+            if (empty($form[$key]) || ! is_array($form[$key])) {
+                continue;
+            }
+            $formId = (int) ($form['id'] ?? 0);
+            if ($formId <= 0) {
+                continue;
+            }
+
+            $existingByName = [];
+            $existing = $this->get_feeds($formId);
+            foreach (is_array($existing) ? $existing : [] as $row) {
+                $name = (string) rgars($row, 'meta/feedName');
+                if ($name !== '') {
+                    $existingByName[$name] = (int) $row['id'];
+                }
+            }
+
+            foreach ($form[$key] as $feed) {
+                $meta = $feed['meta'] ?? [];
+                if (! is_array($meta)) {
+                    continue;
+                }
+                $name = (string) rgar($meta, 'feedName');
+                if (isset($existingByName[$name])) {
+                    // Update in place so re-importing the same form refreshes
+                    // its feed configuration instead of duplicating.
+                    $this->update_feed_meta($existingByName[$name], $meta);
+                    if (isset($feed['is_active'])) {
+                        $this->update_feed_active($existingByName[$name], (int) $feed['is_active']);
+                    }
+
+                    continue;
+                }
+                $newId = \GFAPI::add_feed($formId, $meta, $this->_slug);
+                if (! is_wp_error($newId) && isset($feed['is_active'])) {
+                    $this->update_feed_active((int) $newId, (int) $feed['is_active']);
+                }
+            }
+        }
+    }
+
     public function plugin_settings_fields(): array
     {
         return [
@@ -129,6 +211,13 @@ class AddOn extends \GFFeedAddOn
                         'required' => true,
                         'class' => 'medium merge-tag-support mt-position-right',
                         'tooltip' => __('Used as the "title" payload field. Supports Gravity Forms merge tags, e.g. "Reklamaatio: {Tuote:16:value}" (the :value modifier preserves the stored value for select fields) or "Palaute: {Nimi:2}".', 'gravityforms-elisadesk'),
+                    ],
+                    [
+                        'name' => 'endpoint',
+                        'label' => __('Endpoint URL override', 'gravityforms-elisadesk'),
+                        'type' => 'text',
+                        'class' => 'medium',
+                        'tooltip' => __('Optional per-feed override. Useful when different feeds need different endpoints — e.g. one feed per language with its own Elisa Desk URL. Leave empty to use the site-wide endpoint from the plugin settings.', 'gravityforms-elisadesk'),
                     ],
                 ],
             ],
@@ -580,6 +669,10 @@ class AddOn extends \GFFeedAddOn
     }
 
     /**
+     * Precedence: per-feed override → plugin setting → constant → env. A site
+     * can use the `genero/elisa_desk/endpoint` filter as a final escape hatch
+     * for routing rules that aren't expressible as a feed setting.
+     *
      * @param  array<string, mixed>  $feed
      * @param  array<string, mixed>  $entry
      * @param  array<string, mixed>  $form
@@ -587,14 +680,14 @@ class AddOn extends \GFFeedAddOn
      */
     private function resolveEndpoint(array $feed = [], array $entry = [], array $form = [])
     {
-        $endpoint = trim((string) $this->get_plugin_setting('endpoint'));
+        $endpoint = trim((string) rgars($feed, 'meta/endpoint'));
+        if ($endpoint === '') {
+            $endpoint = trim((string) $this->get_plugin_setting('endpoint'));
+        }
         if ($endpoint === '') {
             $endpoint = (string) (Plugin::getInstance()->endpoint() ?? '');
         }
 
-        // Lets a site route to per-language / per-environment endpoints —
-        // e.g. an add_filter() in functions.php that returns a different URL
-        // based on pll_current_language() or feed metadata.
         $endpoint = (string) apply_filters('genero/elisa_desk/endpoint', $endpoint, $feed, $entry, $form);
 
         if ($endpoint === '') {

@@ -61,6 +61,12 @@ msgstr "Otsikon malli"
 msgid "Used as the \"title\" payload field. Supports Gravity Forms merge tags, e.g. \"Reklamaatio: {Tuote:16:value}\" (the :value modifier preserves the stored value for select fields) or \"Palaute: {Nimi:2}\"."
 msgstr "Käytetään \"title\"-hyötykuormakenttänä. Tukee Gravity Formsin yhdistelytageja, esim. \"Reklamaatio: {Tuote:16:value}\" (:value-muuntelija säilyttää valintakenttien tallennetun arvon) tai \"Palaute: {Nimi:2}\"."
 
+msgid "Endpoint URL override"
+msgstr "Päätepisteen URL:n ohitus"
+
+msgid "Optional per-feed override. Useful when different feeds need different endpoints — e.g. one feed per language with its own Elisa Desk URL. Leave empty to use the site-wide endpoint from the plugin settings."
+msgstr "Vapaaehtoinen syötekohtainen ohitus. Hyödyllinen, kun eri syötteet tarvitsevat eri päätepisteet — esim. yksi syöte per kieli omalla Elisa Desk -URL:lla. Jätä tyhjäksi käyttääksesi lisäosan asetuksissa määritettyä sivustokohtaista päätepistettä."
+
 msgid "Source site"
 msgstr "Lähdesivusto"
 

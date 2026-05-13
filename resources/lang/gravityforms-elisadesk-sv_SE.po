@@ -61,6 +61,12 @@ msgstr "Titelmall"
 msgid "Used as the \"title\" payload field. Supports Gravity Forms merge tags, e.g. \"Reklamaatio: {Tuote:16:value}\" (the :value modifier preserves the stored value for select fields) or \"Palaute: {Nimi:2}\"."
 msgstr "Används som nyttolastfältet \"title\". Stöder Gravity Forms sammanslagningstaggar, t.ex. \"Reklamaatio: {Tuote:16:value}\" (:value-modifieraren bevarar det lagrade värdet för select-fält) eller \"Palaute: {Nimi:2}\"."
 
+msgid "Endpoint URL override"
+msgstr "Åsidosättning av endpoint-URL"
+
+msgid "Optional per-feed override. Useful when different feeds need different endpoints — e.g. one feed per language with its own Elisa Desk URL. Leave empty to use the site-wide endpoint from the plugin settings."
+msgstr "Valfri åsidosättning per flöde. Användbart när olika flöden behöver olika endpoints — t.ex. ett flöde per språk med sin egen Elisa Desk-URL. Lämna tom för att använda den webbplatsövergripande endpoint som anges i pluginets inställningar."
+
 msgid "Source site"
 msgstr "Källwebbplats"
 
