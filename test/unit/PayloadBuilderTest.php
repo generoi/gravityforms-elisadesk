@@ -155,4 +155,51 @@ class PayloadBuilderTest extends TestCase
     {
         $this->assertSame([], PayloadBuilder::collectAttachmentUrls(''));
     }
+
+    // -- extractProductCode() --
+
+    public function test_extract_product_code_pulls_trailing_parens(): void
+    {
+        $this->assertSame(
+            '13263',
+            PayloadBuilder::extractProductCode('Eetvartti grillimakkara 400 g (13263)')
+        );
+    }
+
+    public function test_extract_product_code_trims_inner_whitespace(): void
+    {
+        $this->assertSame(
+            '13263',
+            PayloadBuilder::extractProductCode('Label ( 13263 )')
+        );
+    }
+
+    public function test_extract_product_code_passes_value_without_parens_through(): void
+    {
+        $this->assertSame(
+            'Some product 13263',
+            PayloadBuilder::extractProductCode('Some product 13263')
+        );
+    }
+
+    public function test_extract_product_code_uses_trailing_parens_when_label_has_multiple(): void
+    {
+        $this->assertSame(
+            '13263',
+            PayloadBuilder::extractProductCode('Foo (special) bar (13263)')
+        );
+    }
+
+    public function test_extract_product_code_ignores_parens_in_middle(): void
+    {
+        $this->assertSame(
+            'Foo (note) bar',
+            PayloadBuilder::extractProductCode('Foo (note) bar')
+        );
+    }
+
+    public function test_extract_product_code_returns_empty_for_empty(): void
+    {
+        $this->assertSame('', PayloadBuilder::extractProductCode(''));
+    }
 }

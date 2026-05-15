@@ -428,6 +428,9 @@ class AddOn extends \GFFeedAddOn
 
                 continue;
             }
+            if ($key === 'product') {
+                $value = PayloadBuilder::extractProductCode($value);
+            }
             if ($value !== '') {
                 $fields[$key] = $value;
             }

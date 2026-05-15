@@ -74,6 +74,25 @@ class PayloadBuilder
     }
 
     /**
+     * Pulls the trailing parenthesized code out of a product label, e.g.
+     * `"Eetvartti grillimakkara 400 g (13263)"` → `"13263"`. Returns the value
+     * unchanged if no trailing `(...)` is present, so non-product strings pass
+     * through safely.
+     *
+     * Background: Snellman's product dropdown stores the verbose label as the
+     * choice value, with the SKU appended in parens. Elisa Desk wants only the
+     * SKU on the `product` field so it can match against their catalog.
+     */
+    public static function extractProductCode(string $value): string
+    {
+        if (preg_match('/\(([^()]+)\)\s*$/', $value, $m)) {
+            return trim($m[1]);
+        }
+
+        return $value;
+    }
+
+    /**
      * Decodes a Gravity Forms `fileupload` field value, which is either a JSON
      * array (multi-file) or a single URL string. Empty/falsy URLs are dropped.
      *
