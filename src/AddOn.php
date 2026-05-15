@@ -408,7 +408,11 @@ class AddOn extends \GFFeedAddOn
 
             $gfField = self::findField($form, $fieldId);
             if ($gfField !== null && self::isFileField($gfField)) {
-                $urls = PayloadBuilder::collectAttachmentUrls((string) $this->get_field_value($form, $entry, $fieldId));
+                // Read $entry directly instead of going through GFAddOn::get_field_value():
+                // for multipleFiles=true uploads the latter joins URLs with " , " — not JSON —
+                // which collectAttachmentUrls can't split. The raw entry value is reliable
+                // (JSON array when multi-file, single URL string when single-file).
+                $urls = PayloadBuilder::collectAttachmentUrls((string) rgar($entry, $fieldId));
                 foreach (self::resolveLocalFiles($urls) as $path) {
                     $files[] = [
                         'name' => $key,
